@@ -14,22 +14,24 @@ export default function AppRoutes() {
 
         <BrowserRouter>
 
-            <Routes>
+            <UsuarioProvider>
+                <Routes>
+                    <Route path="/" element={<Login />} />
 
-                <Route path="/"
+                    <Route path="feira" element={<Feira />} />
+
+                    <Route path="carrinho" 
                     element={
-                        <UsuarioProvider>
-                            <Login />
-                        </UsuarioProvider>
+                    
+                        <Carrinho />
+                    
                     } />
+                </Routes>
+            </UsuarioProvider>
 
-
-
-                <Route path="feira" element={<Feira />} />
-
-                <Route path="carrinho" element={<Carrinho />} />
-            </Routes>
+            
         </BrowserRouter>
+
 
     )
 }
