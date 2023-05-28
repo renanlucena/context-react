@@ -7,14 +7,10 @@ import { useCarrinhoContext } from 'common/context/Carrinho';
 
 
 
-function Produto({
-  nome,
-  foto,
-  id,
-  valor,
-  unidade
-}) {
-  const { adicionarProduto } = useCarrinhoContext();
+function Produto({nome,foto, id, valor,unidade}) {
+
+  const {carrinho, adicionarProduto } = useCarrinhoContext();
+  const produtoNoCarrinho = carrinho.find(itemCarrinho => itemCarrinho.id === id);
 
  
   return (
@@ -34,6 +30,7 @@ function Produto({
         >
           <RemoveIcon />
         </IconButton>
+        {produtoNoCarrinho?.quantidade || 0}
         <IconButton onClick={() => adicionarProduto({nome, foto, id, valor})}>
           <AddIcon />
         </IconButton>
