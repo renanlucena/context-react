@@ -31,7 +31,7 @@ function Produto({nome,foto, id, valor,unidade}) {
           <RemoveIcon />
         </IconButton>
         {produtoNoCarrinho?.quantidade || 0}
-        <IconButton onClick={() => adicionarProduto({nome, foto, id, valor})}>
+        <IconButton color="primary" onClick={() => adicionarProduto({nome, foto, id, valor})}>
           <AddIcon />
         </IconButton>
       </div>
