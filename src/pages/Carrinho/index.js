@@ -4,13 +4,15 @@ import { useState } from 'react';
 import { Container, Voltar, TotalContainer, PagamentoContainer} from './styles';
 import { useCarrinhoContext } from 'common/context/Carrinho';
 import Produto from 'components/Produto';
+import { useNavigate } from 'react-router-dom';
 
 function Carrinho() {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const {carrinho} = useCarrinhoContext();
+  const navigate = useNavigate();
   return (
     <Container>
-      <Voltar />
+      <Voltar onClick={() => navigate(-1)}/>
       <h2>
         Carrinho
       </h2>
