@@ -16,14 +16,15 @@ export default function AppRoutes() {
         <BrowserRouter>
 
             <UsuarioProvider>
+            <CarrinhoProvider>
                 <Routes>
                     <Route path="/" element={<Login />} />
 
                     <Route path="feira" 
                     element={
-                        <CarrinhoProvider>
+                        
                             <Feira />
-                        </CarrinhoProvider>
+                        
                             } />
 
                     <Route path="carrinho" 
@@ -33,6 +34,7 @@ export default function AppRoutes() {
                     
                     } />
                 </Routes>
+            </CarrinhoProvider>
             </UsuarioProvider>
 
             
