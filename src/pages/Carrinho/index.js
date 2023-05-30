@@ -1,17 +1,20 @@
 import { Button, Snackbar, InputLabel, Select, MenuItem} from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
-import { useState } from 'react';
+import { useState, useContext, useMemo } from 'react';
 import { Container, Voltar, TotalContainer, PagamentoContainer} from './styles';
 import { useCarrinhoContext } from 'common/context/Carrinho';
 import Produto from 'components/Produto';
 import { useNavigate } from 'react-router-dom';
 import { usePagamentoContext } from 'common/context/Pagamento';
+import { UsuarioContext } from 'common/context/Usuario';
 
 function Carrinho() {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const {carrinho, valorTotal} = useCarrinhoContext();
+  const {saldo = 0} = useContext(UsuarioContext);
   const {formaPagamento, tiposPagamento, mudarFormaPagamento} = usePagamentoContext();
   const navigate = useNavigate();
+  const total = useMemo(() => saldo - valorTotal, [saldo, valorTotal]);
   return (
     <Container>
       <Voltar onClick={() => navigate(-1)}/>
@@ -40,14 +43,15 @@ function Carrinho() {
           </div>
           <div>
             <h2> Saldo: </h2>
-            <span> R$ </span>
+            <span> R${Number(saldo).toFixed(2)} </span>
           </div>
           <div>
             <h2> Saldo Total: </h2>
-            <span> R$ </span>
+            <span> R$ {Number(total).toFixed(2)}</span>
           </div>
         </TotalContainer>
       <Button
+        disabled = {total<0}
         onClick={() => {
           setOpenSnackbar(true);
         }}
