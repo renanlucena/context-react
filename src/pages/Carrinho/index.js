@@ -51,7 +51,7 @@ function Carrinho() {
           </div>
         </TotalContainer>
       <Button
-        disabled = {total<0}
+        disabled = {total<0 || carrinho.length ===0}
         onClick={() => {
           setOpenSnackbar(true);
         }}
