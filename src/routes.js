@@ -18,6 +18,7 @@ export default function AppRoutes() {
 
             <UsuarioProvider>
                 <CarrinhoProvider>
+                <PagamentoProvider>
                     <Routes>
                         <Route path="/" element={<Login />} />
 
@@ -30,13 +31,14 @@ export default function AppRoutes() {
 
                         <Route path="carrinho"
                             element={
-                                <PagamentoProvider>
+                                
 
                                     <Carrinho />
-                                </PagamentoProvider>
+                                
 
                             } />
                     </Routes>
+                    </PagamentoProvider>
                 </CarrinhoProvider>
             </UsuarioProvider>
 
